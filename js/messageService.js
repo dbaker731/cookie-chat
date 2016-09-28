@@ -1,6 +1,6 @@
 angular.module('chatroom').service('messageService', function($http){
   //Here you'll need to create two methods. One called postMessage and the other called getMessages.
-
+  var baseURL = 'http://practiceapi.devmounta.in/api/chats';
   //On the lines below create a getMessages method. This method will retrieve data from the backend.
   //The url for the get request should be 'http://practiceapi.devmounta.in/api/chats'
   //Be sure to return whatever gets returned from $http so you can call .then in your controller.
@@ -14,7 +14,24 @@ angular.module('chatroom').service('messageService', function($http){
   //Also, remember that $http returns a promise. So if you return the whole $http call (return $http(...)), you can then use .then in your controller.
 
   //postMessage method here
+  this.postMessage = function( messageObj ){
+    return $http({
+      method: 'POST',
+      url: baseURL,
+      data: messageObj
+    }).then( function( response ){
+      console.log(response);
+    });
+  };
 
 
   //getMessages method here
+
+  this.getMessages = function() {
+    return $http({
+      method: 'GET',
+      url: baseURL
+    });
+  };
+
 });
