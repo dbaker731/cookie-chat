@@ -19,8 +19,6 @@ angular.module('chatroom').service('messageService', function($http){
       method: 'POST',
       url: baseURL,
       data: messageObj
-    }).then( function( response ){
-      console.log(response);
     });
   };
 

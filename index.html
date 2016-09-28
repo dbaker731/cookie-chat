@@ -11,7 +11,6 @@
       <h1> DevMountain Chat Room </h1>
       <form ng-submit="postMessage(message)">
         <input class="form-control text-box" type="text" ng-model="message" placeholder="Message">
-        <button type="button" ng-click="postMessage( message )">test</button>
       </form>
       <div class="messages-container">
         <p ng-repeat="message in messages"> {{message.message}} </p>

@@ -12,36 +12,25 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
   $scope.getMessages= function(){
     messageService.getMessages().then( function( response ){
       $scope.messages = response.data;
-      console.log(response);
     });
   };
 
-  $scope.getMessages();
 
   $scope.postMessage = function ( message ){
     var messageObj = {
-      $$hashKey: "0001",
-      cookie: "Delectable Chocolate Chip Cookie",
-      createdAt: "2016-09-28T17:21:11.211Z",
       message: message
     };
-
-    messageService.postMessage( messageObj ).then( function( response ){
-      console.log(response);
-    });
-
-      $scope.getMessages();
-
-
+    messageService.postMessage( messageObj );
+    $scope.message = '';
   };
 
 
 
   //uncomment this code when your getMessages function is finished
-  //This goes and gets new data every second, which mimicking a chat room experience.
-  // setInterval(function(){
-  //   $scope.getMessages();
-  // }, 1500);
+  // This goes and gets new data every second, which mimicking a chat room experience.
+  setInterval(function(){
+    $scope.getMessages();
+  }, 1500);
 
 
 });
